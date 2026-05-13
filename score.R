@@ -6,4 +6,6 @@ library(readr)
 library(dplyr)
 
 # Importer jeu de données
-ime <- read_csv("ime-idf-geocod-tri.csv")
+ime <- read_csv("ime-idf-geocod-tri.csv") %>%
+  # Ne conserver que les lignes contenant des coordonnées valides
+  filter(!is.na(latitude), !is.na(longitude))
