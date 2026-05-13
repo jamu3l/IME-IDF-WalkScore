@@ -38,3 +38,7 @@ get_walkscore <- slowly(
 
 # Exécuter la fonction pour chaque IME
 scores <- map2(ime$latitude, ime$longitude, get_walkscore, .progress = TRUE)
+
+# Ajouter le score à chaque ligne du jeu de données
+ime <- ime %>%
+  mutate(walkscore = map_int(scores, \(x) x$result %||% NA_integer_))
