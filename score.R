@@ -35,3 +35,6 @@ get_walkscore <- slowly(
   ),
   rate = rate_delay(1) # Délai d'une seconde entre chaque requête
 )
+
+# Exécuter la fonction pour chaque IME
+scores <- map2(ime$latitude, ime$longitude, get_walkscore, .progress = TRUE)
