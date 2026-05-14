@@ -1,6 +1,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/jamu3l/IME-IDF-WalkScore?path=ime-idf-walkscore.csv&label=actualis%C3%A9&cacheSeconds=3600)
 
-Ce jeu de données est un remix du jeu de données [_Localisation et caractéristiques des IME d'Île-de-France_](https://www.data.gouv.fr/datasets/localisation-et-caracteristiques-des-ime-dile-de-france), avec l'ajout de l'indice [Walk Score](https://www.walkscore.com/) pour chaque IME.
+Ce jeu de données est un remix du jeu de données [_Localisation et caractéristiques des IME d'Île-de-France_](https://www.data.gouv.fr/datasets/localisation-et-caracteristiques-des-ime-dile-de-france) avec l'ajout de l'indice [Walk Score](https://www.walkscore.com/) pour chaque IME.
 
 | Colonne     | Description                                     |
 | ----------- | ----------------------------------------------- |
