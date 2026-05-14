@@ -21,7 +21,7 @@ usethis::edit_r_environ(scope = "project")
 
 3. Ajoutez votre clé API comme suit, puis sauvegardez et redémarrez R :
 
-```r
+```
 WALKSCORE_API_KEY=votre_clé_ici
 ```
 
