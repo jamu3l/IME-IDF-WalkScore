@@ -29,9 +29,13 @@ get_walkscore <- slowly(
         req_perform() %>%
         resp_body_json()
       
-      res$walkscore
+      # Extraire les données pertinentes de la réponse API
+      list(
+        walkscore = res$walkscore %||% NA_integer_,
+        ws_link   = res$ws_link   %||% NA_character_
+      )
     },
-    otherwise = NA_integer_ # Valeur de remplacement en cas d'échec
+    otherwise = list(walkscore = NA_integer_, ws_link = NA_character_) # Valeur de remplacement en cas d'échec
   ),
   rate = rate_delay(1) # Délai d'une seconde entre chaque requête
 )
@@ -41,7 +45,7 @@ scores <- map2(ime$latitude, ime$longitude, get_walkscore, .progress = TRUE)
 
 # Ajouter le score à chaque ligne du jeu de données
 ime <- ime %>%
-  mutate(walkscore = map_int(scores, \(x) x$result %||% NA_integer_))
+  bind_cols(map_dfr(scores, \(x) x$result))
 
 # Exporter le jeu de données avec le walkscore
 write_csv(ime, "ime-idf-walkscore.csv")
