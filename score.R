@@ -5,6 +5,7 @@
 
 library(readr)
 library(dplyr)
+library(stringr)
 library(purrr)
 library(httr2)
 
@@ -45,7 +46,9 @@ scores <- map2(ime$latitude, ime$longitude, get_walkscore, .progress = TRUE)
 
 # Ajouter le score à chaque ligne du jeu de données
 ime <- ime %>%
-  bind_cols(map_dfr(scores, \(x) x$result))
+  bind_cols(map_dfr(scores, \(x) x$result)) %>%
+  # Supprimer paramètres UTM
+  mutate(ws_link = str_remove(ws_link, "\\?.*$"))
 
 # Exporter le jeu de données avec le walkscore
 write_csv(ime, "ime-idf-walkscore.csv")
