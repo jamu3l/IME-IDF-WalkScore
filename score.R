@@ -44,4 +44,4 @@ ime <- ime %>%
   mutate(walkscore = map_int(scores, \(x) x$result %||% NA_integer_))
 
 # Exporter le jeu de données avec le walkscore
-write_csv(ime, "ime-idf-walkscore.csv", delim = ";")
+write_csv(ime, "ime-idf-walkscore.csv")
